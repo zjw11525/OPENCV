@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(opencv_002.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  源.cpp
+c:\users\administrator\desktop\github\opencv_006\opencv_002\源.cpp(26): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  opencv_002.vcxproj -> C:\Users\Administrator\Desktop\github\opencv_006\x64\Debug\opencv_006.exe
