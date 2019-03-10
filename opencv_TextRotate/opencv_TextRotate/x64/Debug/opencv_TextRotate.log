@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\administrator\desktop\opencv_git\opencv_textrotate\opencv_textrotate\main.cpp(24): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  opencv_TextRotate.vcxproj -> C:\Users\Administrator\Desktop\opencv_git\opencv_TextRotate\x64\Debug\opencv_TextRotate.exe
