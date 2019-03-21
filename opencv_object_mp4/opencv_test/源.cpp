@@ -1,5 +1,6 @@
 #include "opencv2/opencv.hpp"
-#include<iostream>
+#include <iostream>
+#include <Windows.h>
 using namespace std;
 using namespace cv;
 
@@ -18,7 +19,7 @@ Mat MoveDetect(Mat frame1, Mat frame2)//背景减法
 
 	//腐蚀膨胀滤波
 	Mat element = getStructuringElement(MORPH_RECT, Size(3, 3));
-	Mat element2 = getStructuringElement(MORPH_RECT, Size(30, 30));
+	Mat element2 = getStructuringElement(MORPH_RECT, Size(10, 10));
 	erode(diff, diff, element);
 	imshow("erode", diff);
 	dilate(diff, diff, element2);
@@ -49,11 +50,12 @@ Mat MoveDetect(Mat frame1, Mat frame2)//背景减法
 
 void main()
 {
-	VideoCapture cap(1);
+	VideoCapture cap(0);
 	if (!cap.isOpened()) //检查打开是否成功
 		return;
+	Sleep(5);
 	Size size0 = Size(cap.get(CV_CAP_PROP_FRAME_WIDTH), cap.get(CV_CAP_PROP_FRAME_HEIGHT));
-	//VideoWriter writer("C:\\Users\\Administrator\\Desktop\\运动物体检测\\out.mp4", -1, cap.get(CV_CAP_PROP_FPS), size0, false);
+	VideoWriter writer("C:\\Users\\Administrator\\Desktop\\out.mp4", -1, cap.get(CV_CAP_PROP_FPS), size0, false);
 	Mat frame;
 	Mat background;
 	Mat result;
@@ -70,7 +72,7 @@ void main()
 				background = frame.clone(); //提取第一帧为背景帧
 			//imshow("video", frame);
 			result = MoveDetect(background, frame);
-			imshow("result", result);
+			imshow("dst", result);
 			//writer << result;
 			//帧差法
 			//if (count == 1)
@@ -80,7 +82,7 @@ void main()
 			////imshow("video", frame);
 			//imshow("result", result);
 			//temp = frame.clone();
-
+			writer << result;
 			if (waitKey(50) == 27)
 				break;
 		}

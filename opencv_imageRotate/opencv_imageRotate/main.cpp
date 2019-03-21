@@ -104,8 +104,11 @@ void RotateImageCorrect(Mat srcImg)
 int main() 
 {
 	Mat src = imread("1.jpg");
-	//imshow("src",src);
+	imshow("src",src);
 	RotateImageCorrect(src);
+
+
+
 	waitKey(0);
 	return 0;
 }
