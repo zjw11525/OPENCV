@@ -9,25 +9,53 @@ Mat Myellipse(Mat image);
 Mat MyCircle(Mat image);
 Mat MyPolygon(Mat image);
 void RandomLine(Mat image);
-int main(int argc, char** argv) {
-	Mat src = imread("22.jpg");
-	if (!src.data) {
-		return -1;
-	}
-	imshow("src",src);
-
-	Mat dst = Mat::zeros(src.size(),src.type());
-	Mat dst1 = Mat::zeros(src.size(), src.type());
-	//medianBlur(src,dst,3);
-	bilateralFilter(src,dst,15,50,5);
-	//blur(src,dst,Size(11,11),Point(-1,-1));
-
-	imshow("dst",dst);
-
+Mat frame;
+Mat dst;
+int sigma = 50;
+void blur(int, void*) 
+{
+	bilateralFilter(frame, dst, 15, sigma, 5);//双边滤波
 	Mat kernel = (Mat_<int>(3,3) << 0,-1,0,-1,5,-1,0,-1,0);
-	filter2D(dst,dst1,-1,kernel,Point(-1,-1),0);
-	//GaussianBlur(src,dst1,Size(11,11),11,11);//size必须取奇数
-	imshow("dst1",dst1);
+	filter2D(dst,dst,-1,kernel,Point(-1,-1),0);
+	GaussianBlur(dst,dst,Size(11,11),11,11);//size必须取奇数
+	imshow("dst", dst);
+}
+int main(int argc, char** argv) {
+	VideoCapture cap(0);
+	if (!cap.isOpened())
+		return -1;
+
+	while (1) 
+	{
+		cap >> frame;
+		imshow("dst", frame);
+
+		createTrackbar("d", "dst", &sigma, 100, blur);
+		blur(0, 0);
+		//Mat dst = Mat::zeros(src.size(),src.type());
+		//Mat dst1 = Mat::zeros(src.size(), src.type());
+		//medianBlur(src,dst,3);
+		//bilateralFilter(frame,dst,15,50,5);//双边滤波
+		//blur(src,dst,Size(11,11),Point(-1,-1));
+
+		//imshow("dst",dst);
+
+		//Mat kernel = (Mat_<int>(3,3) << 0,-1,0,-1,5,-1,0,-1,0);
+		//filter2D(dst,dst1,-1,kernel,Point(-1,-1),0);
+		////GaussianBlur(src,dst1,Size(11,11),11,11);//size必须取奇数
+		//imshow("dst1",dst1);
+
+
+		if (waitKey(50) == 27)
+			break;
+	}
+	//Mat src = imread("22.jpg");
+	//if (!src.data) {
+	//	return -1;
+	//}
+	//imshow("src",src);
+
+
 
 	waitKey(0);
 	return 0;
