@@ -15,7 +15,8 @@ int main()
 
 	Mat xgrad;
 	Mat ygrad;
-
+	
+	
 	//Sobel(gray, xgrad, CV_16S, 1, 0, 3);
 	//Sobel(gray, ygrad, CV_16S, 0, 1, 3);
 	Scharr(gray, xgrad, CV_16S, 1, 0);
