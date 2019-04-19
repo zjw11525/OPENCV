@@ -13,7 +13,6 @@ int main()
 	GaussianBlur(src, dst, Size(3, 3), 0, 0);
 	cvtColor(dst, gray, CV_BGR2GRAY);
 
-
 	Mat xgrad;
 	Mat ygrad;
 
