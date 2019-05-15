@@ -1,4 +1,4 @@
 ﻿  main.cpp
-c:\users\administrator\desktop\opencv\opencv_imagerotate\opencv_imagerotate\main.cpp(32): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-c:\users\administrator\desktop\opencv\opencv_imagerotate\opencv_imagerotate\main.cpp(33): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\Users\Administrator\Desktop\OPENCV\opencv_imageRotate\opencv_imageRotate\main.cpp(32): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\Users\Administrator\Desktop\OPENCV\opencv_imageRotate\opencv_imageRotate\main.cpp(33): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
   opencv_imageRotate.vcxproj -> C:\Users\Administrator\Desktop\OPENCV\opencv_imageRotate\x64\Debug\opencv_imageRotate.exe
